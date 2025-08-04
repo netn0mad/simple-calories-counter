@@ -8,7 +8,7 @@ impl super::action::Action for AddProduct {
     }
 
     fn get_about_info() -> String {
-        "This action makes it possible to add a product to the general\
-        database for its further use.".to_string()
+        "'".to_string() + Self::ACTION_KEY + "' - this action makes it possible to add a product to the general\n\
+        database for its further use.\n\n"
     }
 }
