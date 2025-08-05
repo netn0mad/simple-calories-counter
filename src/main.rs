@@ -1,6 +1,7 @@
 use clap::Parser;
 use crate::actions::action::Action;
 
+mod entities;
 mod actions;
 mod db;
 
@@ -35,9 +36,6 @@ fn main() {
 
     if let Some(action) = args.action {
         match action.as_str() {
-            actions::add_product::AddProduct::ACTION_KEY => {
-                actions::add_product::AddProduct::action();
-            },
             actions::add_food_intake::FoodIntake::ACTION_KEY => {
                 actions::add_food_intake::FoodIntake::action();
             },
