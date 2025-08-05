@@ -1,4 +1,3 @@
-use std::io::{self, Write};
 use time::{OffsetDateTime};
 
 use crate::{db::utils::get_formated_datetime};
@@ -10,8 +9,12 @@ impl super::action::Action for FoodIntake {
 
     fn action() -> () {
         println!("Please, enter product data:");
-        let product_name = get_product_name();
-        let product_weight = get_product_weight();
+        let name = super::input::get_string("Name".to_string());
+        let calories = super::input::get_i32("Calories (per 100g)".to_string());
+        let proteins = super::input::get_f32("Proteins (per 100g)".to_string());
+        let fats = super::input::get_f32("Fats (per 100g)".to_string());
+        let carbohydrates = super::input::get_f32("Carbohydrates (per 100g)".to_string());
+        let weight = super::input::get_i32("Weight (per 100g)".to_string());
         let current_date_time;
 
         match OffsetDateTime::now_local() {
@@ -21,7 +24,17 @@ impl super::action::Action for FoodIntake {
 
         let formated_date_time = get_formated_datetime(current_date_time);
 
-        match crate::entities::food_intake::insert_food_intake(product_name, formated_date_time, product_weight) {
+        let intake = crate::entities::food_intake::FoodIntake {
+            product_name: name,
+            calories: calories,
+            proteins: proteins,
+            fats: fats,
+            carbohydrates: carbohydrates,
+            weight: weight,
+            eaten_at: formated_date_time
+        };
+
+        match crate::entities::food_intake::insert_food_intake(intake) {
             Ok(()) => (),
             Err(error) => println!("Error. {}", error),
         }
@@ -33,42 +46,3 @@ impl super::action::Action for FoodIntake {
     }
 }
 
-fn get_product_name() -> String {
-    loop {
-        print!("Name: ");
-        io::stdout().flush().expect("Error buffer flush.");
-
-        let mut product_name = String::new();
-
-        io::stdin()
-            .read_line(&mut product_name)
-            .expect("Error. Bad input");
-
-        let product_name = product_name.trim().to_string();
-
-        if product_name.is_empty() {
-            println!("Please enter a non-empty string");
-            continue;
-        }
-        
-        return product_name;
-    }
-}
-
-fn get_product_weight() -> i32 {
-    loop {
-        print!("Weight (integer): ");
-        io::stdout().flush().expect("Error buffer flush.");
-
-        let mut product_weight = String::new();
-
-        io::stdin()
-            .read_line(&mut product_weight)
-            .expect("Error. Bad input");
-
-        return match product_weight.trim().parse::<i32>() {
-            Ok(weight) => weight,
-            Err(_) => 0, 
-        };
-    }
-}

@@ -1,6 +1,7 @@
 use crate::actions::action::Action;
 
 pub mod action;
+pub mod input;
 pub mod add_food_intake;
 
 pub fn get_full_actions_info() -> String {
