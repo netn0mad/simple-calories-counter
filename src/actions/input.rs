@@ -2,7 +2,7 @@ use std::io::{self, Write};
 
 pub fn get_i32(field_name: String) -> i32 {
     loop {
-        print!("{} (integer): ", field_name);
+        print!("{}: ", field_name);
         io::stdout().flush().expect("Error buffer flush.");
 
         let mut number = String::new();
@@ -23,7 +23,7 @@ pub fn get_i32(field_name: String) -> i32 {
 
 pub fn get_f32(field_name: String) -> f32 {
     loop {
-        print!("{} (float): ", field_name);
+        print!("{}: ", field_name);
         io::stdout().flush().expect("Error buffer flush.");
 
         let mut number = String::new();

@@ -9,7 +9,7 @@ pub fn init() -> Result<()> {
         "create table if not exists food_intakes (
             id integer primary key,
             product_name text not null,
-            calories integer not null,
+            calories real not null,
             proteins real not null,
             fats real not null,
             carbohydrates real not null,
