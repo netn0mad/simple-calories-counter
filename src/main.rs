@@ -42,6 +42,6 @@ fn main() {
             _ => println!("Action not found!"),
         };
     } else {
-        println!("Please specify an action. Use --action-list to see available actions. Or use --help.");
+        println!("Use --help.");
     }
 }
