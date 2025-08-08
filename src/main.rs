@@ -39,6 +39,9 @@ fn main() {
             actions::add_food_intake::FoodIntake::ACTION_KEY => {
                 actions::add_food_intake::FoodIntake::action();
             },
+            actions::info_today::InfoToday::ACTION_KEY => {
+                actions::info_today::InfoToday::action();
+            }
             _ => println!("Action not found!"),
         };
     } else {
