@@ -22,7 +22,9 @@ impl super::action::Action for InfoToday {
         println!("-- Proteins:      {:.2}", summary_food_intake.proteins);
         println!("-- Fats:          {:.2}", summary_food_intake.fats);
         println!("-- Carbohydrates: {:.2}", summary_food_intake.carbohydrates);
+        println!("-- Weight:        {:.2}", summary_food_intake.weight);
 
+        println!("----------------------------------------");
 
         for intake in intakes {
             todo!("Continue...");
