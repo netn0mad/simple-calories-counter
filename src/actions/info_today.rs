@@ -18,20 +18,33 @@ impl super::action::Action for InfoToday {
         println!("-- Данные на {} --------------", summary_food_intake.eaten_at);
         println!("--------------------------------------");
 
-        println!("-- Калорий:   {:.2}", summary_food_intake.calories);
-        println!("-- Белка:     {:.2}", summary_food_intake.proteins);
-        println!("-- Жиров:     {:.2}", summary_food_intake.fats);
-        println!("-- Углеводов: {:.2}", summary_food_intake.carbohydrates);
-        println!("-- Вес:       {:.2}", summary_food_intake.weight);
+        Self.print_intake_data(summary_food_intake);
 
         println!("----------------------------------------");
+        println!("-- Детальная информация");
 
         for intake in intakes {
-            todo!("Continue...");
+            println!("----------------------------------------");
+            Self.print_intake_data(intake);
+            println!("----------------------------------------");
         }
     }
 
     fn get_about_info() -> String {
         "'".to_string() + Self::ACTION_KEY + "' - This action allows you to get information about today's calorie consumption.\n\n"
+    }
+}
+
+impl InfoToday {
+    fn print_intake_data(&self, intake: FoodIntake) {
+        if !intake.product_name.is_empty() {
+            println!("-- Название:  {}", intake.product_name);
+        }
+        
+        println!("-- Калорий:   {:.2}", intake.calories);
+        println!("-- Белка:     {:.2}", intake.proteins);
+        println!("-- Жиров:     {:.2}", intake.fats);
+        println!("-- Углеводов: {:.2}", intake.carbohydrates);
+        println!("-- Вес:       {:.2}", intake.weight);
     }
 }
