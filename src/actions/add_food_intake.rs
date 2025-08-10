@@ -6,13 +6,13 @@ impl super::action::Action for FoodIntake {
     const ACTION_KEY: &str = "add-intake";
 
     fn action() -> () {
-        println!("Please, enter product data:");
-        let name = super::input::get_string("Name".to_string());
-        let calories = super::input::get_f32("Calories (per 100g)".to_string());
-        let proteins = super::input::get_f32("Proteins (per 100g)".to_string());
-        let fats = super::input::get_f32("Fats (per 100g)".to_string());
-        let carbohydrates = super::input::get_f32("Carbohydrates (per 100g)".to_string());
-        let weight = super::input::get_i32("Weight".to_string());
+        println!("Пожалуйста, введите данные приёма пищи:");
+        let name = super::input::get_string("Название продукта".to_string());
+        let calories = super::input::get_f32("Калорий (на 100g)".to_string());
+        let proteins = super::input::get_f32("Белка (на 100g)".to_string());
+        let fats = super::input::get_f32("Жиров (на 100g)".to_string());
+        let carbohydrates = super::input::get_f32("Углеводов (на 100g)".to_string());
+        let weight = super::input::get_i32("Вес".to_string());
         
 
         let intake = crate::entities::food_intake::FoodIntake::new(Product {

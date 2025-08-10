@@ -14,15 +14,15 @@ impl super::action::Action for InfoToday {
             summary_food_intake = summary_food_intake + intake;
         }
 
-        println!("---------------------------------------");
-        println!("-- Summary on {} --------------", summary_food_intake.eaten_at);
-        println!("---------------------------------------");
+        println!("--------------------------------------");
+        println!("-- Данные на {} --------------", summary_food_intake.eaten_at);
+        println!("--------------------------------------");
 
-        println!("-- Calories:      {:.2}", summary_food_intake.calories);
-        println!("-- Proteins:      {:.2}", summary_food_intake.proteins);
-        println!("-- Fats:          {:.2}", summary_food_intake.fats);
-        println!("-- Carbohydrates: {:.2}", summary_food_intake.carbohydrates);
-        println!("-- Weight:        {:.2}", summary_food_intake.weight);
+        println!("-- Калорий:   {:.2}", summary_food_intake.calories);
+        println!("-- Белка:     {:.2}", summary_food_intake.proteins);
+        println!("-- Жиров:     {:.2}", summary_food_intake.fats);
+        println!("-- Углеводов: {:.2}", summary_food_intake.carbohydrates);
+        println!("-- Вес:       {:.2}", summary_food_intake.weight);
 
         println!("----------------------------------------");
 
